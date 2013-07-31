@@ -1,3 +1,4 @@
+require "rubygems"
 require 'appscript'
 include Appscript
 
@@ -9,6 +10,7 @@ include Appscript
 
 
 def notify(appName, title, message, priority=nil, sticky=nil)
+  return
   growl = Appscript.app.by_name("GrowlHelperApp")
 
   growl.register( {:as_application=>appName,

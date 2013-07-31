@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 $MyDir = File.expand_path File.dirname(__FILE__)
-require File.join $MyDir, 'GrowlInterface'
+#require File.join $MyDir, 'GrowlInterface'
 require File.join $MyDir, 'ToolBox'
 require 'osax'
 include OSAX
@@ -23,13 +23,15 @@ class MixedInKeyInterface
     end
     @MikWin=$Se.processes["Mixed In Key 5"].windows[1]
 
-    puts "click on Analize Songs"
-    @MikWin.scroll_areas[1].UI_elements[1].UI_elements["Switch to the analyze panel"].click
-    sleep 0.1
+# Assuming we're already on the right tab
+# Maybe this differs by language
+#    puts "click on Analize Songs"
+#    @MikWin.scroll_areas[1].UI_elements[1].UI_elements["Switch to the analyze panel"].click
+#    sleep 0.1
 
     uiManip{
-      puts "clear all if needed"
-      clearAllIfNeeded
+#      puts "clear all if needed"
+#      clearAllIfNeeded
       sleep(0.5)
       puts "click add files"
       @MikWin.groups[1].buttons[5].click
@@ -55,6 +57,6 @@ end   #  MixedInKeyInterface
 begin
     MixedInKeyInterface.process ARGV[0]
 rescue Exception=>e
-  notify('', 'Processing failed', ARGV[0]+"\n"+ exceptionToS(e), 3, true )
+  #notify('', 'Processing failed', ARGV[0]+"\n"+ exceptionToS(e), 3, true )
   raise e
 end
